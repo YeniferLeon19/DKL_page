@@ -1,0 +1,765 @@
+:root {
+    --bg: rgb(13, 13, 13);
+    --bg-soft: rgb(20, 20, 25);
+
+    --primary: rgb(0, 255, 195);     /* cian suavizado (menos chillón) */
+    --secondary: rgb(138, 43, 226);   /* violeta limpio */
+    --accent: rgb(255, 42, 138);      /* rosa neon más balanceado */
+
+    --text: #b4c8d2;
+    --text-dim: #7a8892;
+}
+
+
+/* =========================
+RESET GENERAL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+ESTILOS BASE
+========================= */
+
+/* =========================
+FONDO CYBERPUNK EXTREMO
+========================= */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* =========================
+CAPA 1: NEON VIVO DINÁMICO
+========================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(8, 10, 18, 0.475), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 255, 208, 0.397), transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(119, 0, 255, 0.39), transparent 60%);
+
+    filter: blur(60px);
+
+    animation: neonMove 12s infinite alternate ease-in-out,
+            neonPulse 4s infinite ease-in-out;
+
+    z-index: -3;
+}
+
+/* =========================
+CAPA 2: SCANLINES MÁS FUERTES
+========================= */
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 195, 0.06) 3px
+    );
+
+    animation: scanMove 3s linear infinite;
+    mix-blend-mode: screen;
+
+    pointer-events: none;
+    z-index: -2;
+}
+/* =========================
+CAPA 3: GRID CYBER REAL
+========================= */
+.cyber-grid {
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(0, 255, 195, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 195, 0.20) 1px, transparent 1px);
+
+    background-size: 80px 80px;
+
+    transform: perspective(600px) rotateX(65deg) scale(1.2);
+
+    animation: gridFlow 6s linear infinite;
+
+    opacity: 0.25;
+    z-index: -1;
+}
+/* =========================
+ANIMACIONES
+========================= */
+
+/* movimiento del glow */
+@keyframes neonMove {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-60px, 40px) scale(1.2);
+    }
+    100% {
+        transform: translate(40px, -50px) scale(1);
+    }
+}
+
+/* pulso tipo energía */
+@keyframes neonPulse {
+    0%   { opacity: 0.6; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* líneas tipo pantalla viva */
+@keyframes scanMove {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(120px);
+    }
+}
+
+/* grid moviéndose hacia ti */
+@keyframes gridFlow {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 80px;
+    }
+}
+/* =========================
+HEADER / NAVBAR
+========================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(13, 13, 13, 0.6);
+    backdrop-filter: blur(12px);
+
+    z-index: 100;
+    transition: 0.3s ease;
+}
+
+header.scrolled {
+    background: rgba(13, 13, 13, 0.85);
+    border-bottom: 1px solid rgba(0, 255, 195, 0.25);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--text);
+}
+
+nav a {
+
+    text-decoration: none;
+
+font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    padding: 8px 16px;
+    margin: 0 8px;
+
+    color: rgba(255,255,255,0.6);
+
+    border-radius: 8px;
+
+    background: transparent;
+    border: 1px solid transparent;
+
+    transition: all 0.25s ease;
+}
+
+nav a:hover {
+    color: #fff;
+
+    border: 1px solid rgba(0, 255, 195, 0.4);
+
+    background: rgba(0, 255, 195, 0.05);
+
+    box-shadow:
+        0 0 10px rgba(0, 255, 195, 0.2),
+        inset 0 0 10px rgba(0, 255, 195, 0.1);
+}
+
+nav .active {
+    color: #00ffc3;
+
+    border: 1px solid rgba(0, 255, 195, 0.6);
+
+    background: rgba(0, 255, 195, 0.08);
+
+    box-shadow:
+        0 0 12px rgba(0,255,195,0.3),
+        inset 0 0 12px rgba(0,255,195,0.15);
+}
+.icons {
+    font-size: 18px;
+    letter-spacing: 8px;
+    color: var(--text-dim);
+}
+/* CARRO LOGO*/
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.nav-categorias {
+    display: flex;
+    gap: 15px;
+}
+
+header .category-card {
+    padding: 8px 16px;
+    font-size: 12px;
+    cursor: pointer;
+
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    color: rgba(255,255,255,0.6);
+
+    transition: 0.3s;
+}
+
+header .category-card:hover {
+    color: #fff;
+    border: 1px solid rgba(0,255,195,0.5);
+    background: rgba(0,255,195,0.05);
+}
+/*========
+BOTÓN DEL CARRITO 
+=========*/
+
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+
+    color: white;
+    font-size: 18px;
+
+    transition: 0.2s;
+}
+
+.cart-icon:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.cart-svg {
+    width: 18px;
+    height: 18px;
+}
+
+.cart-text {
+    font-size: 13px;
+}
+
+#contador {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    background: #00ffc3;
+    color: black;
+
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+/* =========================
+HERO SECTION
+========================= */
+
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+
+    background: url("imagenpagina.png");
+    background-attachment: fixed;
+    background-size: cover;
+}
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.hero-content h1 {
+    font-size: clamp(5rem, 11vw, 10rem);
+    line-height: 0.88;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -3px;
+    text-shadow: 7px 7px 0 #114862;
+}
+
+.hero-content p {
+    margin: 24px 0;
+    max-width: 420px;
+    color: #b7b7b7;
+    font-size: 14px;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+
+/* =========================
+BOTONES GENERALES
+========================= */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #7d6cff, #b4a3ff);
+    transition: all 0.3s ease;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform: translateX(-100%);
+}
+
+.btn:hover::after {
+    transform: translateX(100%);
+    transition: 0.6s;
+}
+
+.btn.light {
+    background: #fff;
+    color: #000;
+}
+
+.btn.dark {
+    background: #111;
+    border: 1px solid #333;
+}
+
+.buttons {
+    display: flex;
+    gap: 14px;
+}
+
+/* =========================
+SECCIONES GENERALES
+========================= */
+.arrivals,
+.archive,
+.categories,
+.featured-products,
+.reviews {
+    padding: 80px 60px;
+}
+
+
+.small-title {
+    margin-bottom: 12px;
+    font-size: 11px;
+    color: #7d6cff;
+    letter-spacing: 2px;
+    opacity: 0.7;
+}
+
+.section-title,
+.archive h2,
+.categories h2,
+.featured-products h2 {
+    margin-bottom: 35px;
+    font-size: 3rem;
+    font-weight: 900;
+    font-style: italic;
+}
+
+/* =========================
+GRID / CARDS
+========================= */
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 220px 180px;
+    gap: 18px;
+}
+
+.card {
+    position: relative;
+    min-height: 180px;
+    padding: 20px;
+    background: linear-gradient(145deg, #111, #1a1a1a);
+    border: 1px solid #1f1f1f;
+    transition: transform 0.35s ease, border 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border: 1px solid rgb(0, 255, 195);
+    box-shadow: 0 0 25px rgba(0, 255, 208, 0.15);
+}
+
+.card.large {
+    grid-row: span 2;
+}
+
+.card.wide {
+    grid-column: span 2;
+}
+
+.card span {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    font-style: italic;
+}
+
+/* =========================
+BARRA DE BÚSQUEDA
+========================= */
+.search-bar {
+    display: flex;
+    justify-content: center;
+     margin-top: 60px; /* empuja hacia abajo */
+    margin-bottom: 40px;
+}
+.search-bar input {
+    width: 60%;
+    padding: 15px 20px;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-bar input:focus {
+    border: 1px solid #1ca295c7;
+    box-shadow: 0 0 10px rgba(49, 192, 192, 0.553);
+}
+
+/* =========================
+CATEGORÍAS
+========================= */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.category-card {
+    padding: 50px 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    background: linear-gradient(145deg, #111, #1a1a1a);
+    border: 1px solid #1f1f1f;
+    transition: 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border: 1px solid #00ffd0;
+    box-shadow: 0 0 12px rgba(0, 255, 208, 0.2);
+}
+
+/* =========================
+PRODUCTOS
+========================= */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    padding: 20px;
+    background: #111;
+    border: 1px solid #1f1f1f;
+    transition: 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+    border: 1px solid rgb(0, 255, 195);
+}
+
+.product-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+.product-card p {
+    margin: 10px 0;
+    color: rgb(0, 255, 195);
+    font-weight: bold;
+}
+
+.product-card button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #7d6cff, #b4a3ff);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* =========================
+PROMOCIÓN
+========================= */
+.promo {
+    margin: 80px 60px;
+    padding: 60px;
+    text-align: center;
+    background: linear-gradient(145deg, #111, #1b1b1b);
+    border: 1px solid #2a2a2a;
+}
+
+.promo h2 {
+    font-size: 4rem;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.promo p {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* =========================
+RESEÑAS
+========================= */
+.review-card {
+    max-width: 600px;
+    padding: 30px;
+    color: #ddd;
+    background: #111;
+    border-left: 4px solid rgb(0, 255, 195);
+}
+
+/* =========================
+FOOTER
+========================= */
+footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 60px;
+    margin-top: 80px;
+    background: #0a0a0a;
+    border-top: 1px solid #1f1f1f;
+}
+
+footer h3 {
+    margin-bottom: 15px;
+    color: rgb(0, 255, 195);
+}
+
+footer p {
+    margin-bottom: 8px;
+    color: #999;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+    .grid,
+    .archive,
+    .category-grid,
+    .product-grid,
+    footer {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+
+    nav {
+        display: none;
+    }
+}
+
+
+.product-card:nth-child(1) { animation-delay: 0.5s; }
+.product-card:nth-child(2) { animation-delay: 1.5s; }
+.product-card:nth-child(3) { animation-delay: 2.5s; }
+
+.category-card:nth-child(1) { animation-delay: 0.3s; }
+.category-card:nth-child(2) { animation-delay: 1.3s; }
+.category-card:nth-child(3) { animation-delay: 2.3s; }
+.category-card:nth-child(4) { animation-delay: 3.3s; }
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 5px rgba(0,255,159,0.2); }
+    50% { box-shadow: 0 0 20px rgba(0,255,159,0.6); }
+    100% { box-shadow: 0 0 5px rgba(0,255,159,0.2); }
+}
+.search-bar input:focus {
+    animation: pulseGlow 3s infinite;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* círculo principal */
+.cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: rgb(0, 255, 208); /* cian principal */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+
+    box-shadow:
+        0 0 6px rgba(0, 255, 208, 0.8),
+        0 0 20px rgba(0, 255, 208, 0.6),
+        0 0 40px rgba(120, 0, 255, 0.4); /* mezcla violeta */
+}
+
+/* halo */
+/* HALO PRO CYBER */
+.cursor-follower {
+    position: fixed;
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+
+    /* borde con degradado */
+    background: radial-gradient(circle, rgba(0,255,208,0.15) 0%, transparent 70%);
+
+    border: 1px solid rgba(0, 255, 208, 0.3);
+
+    /* glow multicapa */
+    box-shadow:
+        0 0 15px rgba(0,255,208,0.4),
+        0 0 35px rgba(0,255,208,0.25),
+        0 0 80px rgba(120,0,255,0.25);
+
+    backdrop-filter: blur(4px);
+
+    transition:
+        transform 0.15s ease,
+        width 0.2s ease,
+        height 0.2s ease,
+        box-shadow 0.3s ease;
+}
+a:hover ~ .cursor-follower,
+button:hover ~ .cursor-follower {
+    width: 60px;
+    height: 60px;
+
+    box-shadow:
+        0 0 20px #00ffc3,
+        0 0 50px rgba(0,255,200,0.6),
+        0 0 100px rgba(120,0,255,0.4);
+}
+
+.carrito {
+    padding: 60px;
+    background: #0a0a0a;
+    border-top: 1px solid #1f1f1f;
+}
+
+.carrito ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.carrito li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background: #111;
+    padding: 10px;
+}
+
+
+
+
+#contador {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background: #00ffc3;
+    color: black;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ffc3;
+}

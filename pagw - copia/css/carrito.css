@@ -1,0 +1,467 @@
+/* PANEL PRINCIPAL */
+body {
+    background: radial-gradient(circle at center, #050505, #000);
+    font-family: 'Inter', sans-serif;
+    color: #00ffc3;
+
+}
+
+.cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: rgb(0, 255, 208);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+
+    box-shadow:
+        0 0 6px rgba(0, 255, 208, 0.8),
+        0 0 20px rgba(0, 255, 208, 0.6),
+        0 0 40px rgba(120, 0, 255, 0.4);
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0, 255, 208, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+
+    box-shadow:
+        0 0 20px rgba(0, 255, 208, 0.3),
+        0 0 60px rgba(120, 0, 255, 0.25);
+
+    backdrop-filter: blur(2px);
+}
+/* TÍTULO */
+/* TÍTULO CYBERPUNK */
+h1 {
+    text-align: center;
+    margin-top: 50px;
+
+    font-size: 3rem;
+    letter-spacing: 6px;
+
+    color: #e6faff;
+
+    /* glow multicapa más profundo */
+    text-shadow:
+        0 0 4px rgba(0,255,200,0.4),
+        0 0 12px rgba(0,255,200,0.3),
+        0 0 25px rgba(0,255,200,0.2),
+        0 0 60px rgba(120,0,255,0.25);
+
+    position: relative;
+}
+
+/* línea tipo sistema debajo */
+h1::after {
+    content: "";
+    display: block;
+    width: 180px;
+    height: 2px;
+
+    margin: 12px auto 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,255,195,0.8),
+        transparent
+    );
+
+    box-shadow:
+        0 0 10px rgba(0,255,195,0.5);
+}
+
+/* efecto leve de energía */
+h1 {
+    animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+    0% {
+        text-shadow:
+            0 0 4px rgba(0,255,200,0.4),
+            0 0 12px rgba(0,255,200,0.3),
+            0 0 25px rgba(0,255,200,0.2),
+            0 0 60px rgba(120,0,255,0.25);
+    }
+    50% {
+        text-shadow:
+            0 0 6px rgba(0,255,200,0.6),
+            0 0 18px rgba(0,255,200,0.5),
+            0 0 40px rgba(0,255,200,0.3),
+            0 0 80px rgba(120,0,255,0.4);
+    }
+    100% {
+        text-shadow:
+            0 0 4px rgba(0,255,200,0.4),
+            0 0 12px rgba(0,255,200,0.3),
+            0 0 25px rgba(0,255,200,0.2),
+            0 0 60px rgba(120,0,255,0.25);
+    }
+}
+
+/* CONTENEDOR */
+#lista-carrito {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid rgba(0,255,200,0.2);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+/* ITEMS */
+#lista-carrito {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 25px;
+
+    border-radius: 16px;
+
+    background: rgba(10, 10, 15, 0.6);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(0,255,200,0.15);
+
+    box-shadow:
+        0 0 30px rgba(0,255,200,0.08),
+        inset 0 0 20px rgba(0,255,200,0.05);
+}
+
+/* HOVER TIPO GAME */
+#lista-carrito li {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 20px;
+    margin-bottom: 14px;
+
+    border-radius: 10px;
+
+    /* fondo con profundidad real */
+    background:
+        linear-gradient(145deg, rgba(18,18,25,0.9), rgba(10,10,15,0.95));
+
+    border: 1px solid rgba(255,255,255,0.04);
+
+    box-shadow:
+        inset 0 0 10px rgba(255,255,255,0.02),
+        0 0 20px rgba(0,0,0,0.6);
+
+    transition: all 0.3s ease;
+}
+
+/* glow lateral tipo sci-fi */
+#lista-carrito li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+
+    width: 3px;
+
+    border-radius: 4px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(0,255,200,0.9),
+        rgba(120,0,255,0.6)
+    );
+
+    box-shadow:
+        0 0 10px rgba(0,255,200,0.6),
+        0 0 20px rgba(120,0,255,0.4);
+
+    opacity: 0.7;
+}
+
+
+
+/* hover PRO */
+#lista-carrito li:hover {
+    transform: translateY(-4px) scale(1.01);
+
+    border: 1px solid rgba(0,255,200,0.4);
+
+    box-shadow:
+        0 0 20px rgba(0,255,200,0.15),
+        0 0 60px rgba(0,255,200,0.05);
+}
+
+#lista-carrito button {
+    position: relative;
+    z-index: 2;
+    border: none;
+    background: transparent;
+
+    color: rgba(255, 80, 80, 0.8);
+
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+#lista-carrito button:hover {
+    color: #ff2a2a;
+
+    transform: scale(1.2);
+
+    text-shadow: 0 0 10px red;
+}
+/* TOTAL */
+p {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 30px;
+
+    color: #00ffc3;
+
+    text-shadow:
+        0 0 10px #00ffc3,
+        0 0 30px rgba(0,255,200,0.5);
+}
+/* BOTONES */
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 30px;
+    border: 1px solid #00ffc3;
+    background: transparent;
+    color: #00ffc3;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+    border: none;
+
+    background: linear-gradient(90deg, #7d6cff, #b4a3ff);
+    color: white;
+
+    transition: all 0.3s ease;
+}
+
+/* brillo animado */
+button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+
+    transform: translateX(-100%);
+}
+
+/* HOVER PRO */
+button:hover {
+    color: black;
+    background: #00ffc3;
+
+    transform: translateY(-2px) scale(1.03);
+
+    box-shadow:
+        0 0 10px #00ffc3,
+        0 0 25px rgba(0,255,195,0.6),
+        0 0 60px rgba(0,255,195,0.3);
+}
+
+/* animación del brillo */
+button:hover::before {
+    transform: translateX(100%);
+    transition: 0.6s;
+}
+
+/* efecto al hacer click */
+button:active {
+    transform: scale(0.97);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 2px,
+        rgba(0,255,200,0.03) 3px
+    );
+
+    animation: scan 4s linear infinite;
+    pointer-events: none;
+}
+
+button.clicked {
+    background: #00ffc3;
+    color: black;
+    box-shadow: 0 0 30px #00ffc3;
+}
+
+/* movimiento más suave */
+@keyframes scan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(200px); }
+}
+@keyframes scan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100px); }
+}
+
+/* =========================
+BOTÓN VACIAR (acción peligrosa)
+========================= */
+.btn-vaciar {
+    display: block;
+    margin: 30px auto 10px;
+    padding: 14px 30px;
+
+    border-radius: 8px;
+    border: 1px solid rgba(255, 60, 60, 0.25);
+
+    background: linear-gradient(145deg, #140808, #0a0a0a);
+
+    color: rgba(255, 120, 120, 0.9);
+
+    letter-spacing: 2px;
+    font-size: 12px;
+
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+
+    transition: all 0.25s ease;
+}
+
+/* glow interno */
+.btn-vaciar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 0, 80, 0.25),
+        transparent
+    );
+
+    transform: translateX(-100%);
+}
+
+/* hover */
+.btn-vaciar:hover {
+    background: linear-gradient(145deg, #140808, #0a0a0a) !important;
+    color: white;
+
+    border: 1px solid rgba(255, 60, 60, 0.6);
+
+    box-shadow:
+        0 0 12px rgba(255, 60, 60, 0.3),
+        0 0 30px rgba(255, 0, 80, 0.2);
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+BOTÓN VOLVER PRO (cyber minimal)
+========================= */
+.btn-volver {
+    display: inline-block;
+    margin: 20px auto;
+    text-align: center;
+
+    padding: 8px 16px;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    position: relative;
+    overflow: hidden;
+
+    transition: all 0.3s ease;
+}
+
+/* glow suave base */
+.btn-volver::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(circle, rgba(0,255,195,0.15), transparent 70%);
+    opacity: 0;
+
+    transition: 0.3s;
+}
+
+/* línea inferior pro */
+.btn-volver::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    width: 0%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00ffc3,
+        transparent
+    );
+
+    transform: translateX(-50%);
+    transition: 0.35s ease;
+}
+
+/* hover */
+.btn-volver:hover {
+    color: #00ffc3;
+
+    background: rgba(0,255,195,0.05);
+
+    box-shadow:
+        0 0 10px rgba(0,255,195,0.2),
+        inset 0 0 10px rgba(0,255,195,0.1);
+}
+
+/* activa glow */
+.btn-volver:hover::before {
+    opacity: 1;
+}
+
+/* línea animada */
+.btn-volver:hover::after {
+    width: 100%;
+}
+
+/* click */
+.btn-volver:active {
+    transform: scale(0.95);
+}
