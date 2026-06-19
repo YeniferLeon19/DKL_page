@@ -10,7 +10,6 @@
     --text-dim: #7a8892;
 }
 
-
 /* =========================
 RESET GENERAL
 ========================= */
@@ -23,123 +22,64 @@ RESET GENERAL
 /* =========================
 ESTILOS BASE
 ========================= */
-
 /* =========================
-FONDO CYBERPUNK EXTREMO
+FONDO CYBERPUNK EXTREMO (ESTILO TV CRT VIEJA)
+========================= */
+/* =========================
+OPCIÓN 1 MODIFICADA: SYNTHWAVE LIMPIO (SIN LÍNEAS NEGRAS)
 ========================= */
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
+    font-family: 'Pixelify Sans', sans-serif;
+    background: #0a051b; /* Azul medianoche muy oscuro */
     color: var(--text);
     overflow-x: hidden;
 }
 
-/* =========================
-CAPA 1: NEON VIVO DINÁMICO
-========================= */
+/* Capa 1: Atardecer Neón (Degradado vertical de Azul a Morado/Magenta) */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-
     background: 
-        radial-gradient(circle at 20% 30%, rgba(8, 10, 18, 0.475), transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(0, 255, 208, 0.397), transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(119, 0, 255, 0.39), transparent 60%);
-
-    filter: blur(60px);
-
-    animation: neonMove 12s infinite alternate ease-in-out,
-            neonPulse 4s infinite ease-in-out;
-
+        linear-gradient(to bottom, #0a051b 20%, #20053b 60%, #61005b 100%);
+    opacity: 0.8;
     z-index: -3;
 }
 
-/* =========================
-CAPA 2: SCANLINES MÁS FUERTES
-========================= */
-
+/* Capa 2: Viñeteado de Bordes (Mantiene las esquinas oscuras para dar profundidad) */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
-
-    background: repeating-linear-gradient(
-        to bottom,
-        transparent,
-        transparent 2px,
-        rgba(0, 255, 195, 0.06) 3px
-    );
-
-    animation: scanMove 3s linear infinite;
-    mix-blend-mode: screen;
-
+    
+    /* Eliminadas las scanlines negras; dejamos solo el degradado que oscurece los bordes */
+    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+    
     pointer-events: none;
-    z-index: -2;
+    z-index: -1;
 }
-/* =========================
-CAPA 3: GRID CYBER REAL
-========================= */
+
+/* Capa 3: La Rejilla Retrofuturista en Perspectiva */
 .cyber-grid {
     position: fixed;
     inset: 0;
-
     background-image:
-        linear-gradient(rgba(0, 255, 195, 0.25) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 195, 0.20) 1px, transparent 1px);
-
-    background-size: 80px 80px;
-
-    transform: perspective(600px) rotateX(65deg) scale(1.2);
-
-    animation: gridFlow 6s linear infinite;
-
-    opacity: 0.25;
-    z-index: -1;
-}
-/* =========================
-ANIMACIONES
-========================= */
-
-/* movimiento del glow */
-@keyframes neonMove {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-    50% {
-        transform: translate(-60px, 40px) scale(1.2);
-    }
-    100% {
-        transform: translate(40px, -50px) scale(1);
-    }
+        linear-gradient(rgba(255, 0, 128, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(130, 0, 255, 0.2) 1px, transparent 1px);
+    background-size: 60px 60px;
+    
+    /* El truco de la perspectiva inclinada hacia el horizonte */
+    transform: perspective(300px) rotateX(75deg) scale(2) translateY(-50px);
+    transform-origin: top center;
+    
+    animation: gridDrive 4s linear infinite;
+    z-index: -2;
 }
 
-/* pulso tipo energía */
-@keyframes neonPulse {
-    0%   { opacity: 0.6; }
-    50%  { opacity: 1; }
-    100% { opacity: 0.6; }
-}
-
-/* líneas tipo pantalla viva */
-@keyframes scanMove {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(120px);
-    }
-}
-
-/* grid moviéndose hacia ti */
-@keyframes gridFlow {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 0 80px;
-    }
+@keyframes gridDrive {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 60px; } /* Se mueve suavemente hacia ti */
 }
 /* =========================
 HEADER / NAVBAR
@@ -173,50 +113,118 @@ header.scrolled {
     color: var(--text);
 }
 
+/* =========================
+NAV COMBINADO: TERMINAL DE DATOS NIGHT-CITY (DISTRIBUCIÓN MEJORADA)
+========================= */
+nav {
+    display: flex;
+    align-items: center;
+    /* Un espacio de separación constante y limpio entre cada bloque */
+    gap: 16px; 
+}
+
 nav a {
-
     text-decoration: none;
-
-font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
+    font-family: 'Pixelify Sans', sans-serif;
     font-size: 13px;
-    letter-spacing: 1px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    position: relative;
+    padding: 8px 0; /* Controlamos el alto con padding vertical */
+    
+    /* 👇 EL TRUCO DE DISTRIBUCIÓN: Ancho fijo para que todos midan igual 👇 */
+    min-width: 140px; 
+    /* Centra el texto perfectamente dentro del bloque inclinado */
+    justify-content: center; 
 
-    padding: 8px 16px;
-    margin: 0 8px;
-
-    color: rgba(255,255,255,0.6);
-
-    border-radius: 8px;
-
-    background: transparent;
-    border: 1px solid transparent;
-
-    transition: all 0.25s ease;
+    /* REPOSO: Texto en color lavanda/azul difuminado de la ilustración */
+    color: #7a8892 !important; 
+    
+    /* Fondo inclinado de pestaña militar/mecha en violeta muy oscuro traslúcido */
+    background: rgba(20, 15, 30, 0.8) !important; 
+    
+    /* Borde izquierdo en violeta limpio */
+    border-left: 3px solid rgb(138, 43, 226) !important;
+    border-bottom: 1px solid rgba(138, 43, 226, 0.2) !important;
+    
+    transform: skewX(-10deg); 
+    
+    border-top: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    
+    transition: none; 
+    display: inline-flex;
+    align-items: center;
 }
 
+/* CÓDIGO SUBYACENTE ESTÁTICO (Hexadecimal de sistema en la esquina) */
+nav a::before {
+    content: "SYS_x0" counter(menu-counter);
+    position: absolute;
+    top: -10px;
+    /* Alineado con el inicio del borde del botón */
+    left: 4px; 
+    font-family: 'Courier New', monospace;
+    font-size: 7px;
+    color: #7a8892;
+    opacity: 0.5;
+    transform: skewX(10deg); 
+}
+
+/* Configuración de contador automático */
+nav {
+    counter-reset: menu-counter;
+}
+nav a {
+    counter-increment: menu-counter;
+}
+
+/* =========================
+DINAMISMO ULTRA-RETRO (AL PASAR EL MOUSE)
+========================= */
 nav a:hover {
-    color: #fff;
-
-    border: 1px solid rgba(0, 255, 195, 0.4);
-
-    background: rgba(0, 255, 195, 0.05);
-
-    box-shadow:
-        0 0 10px rgba(0, 255, 195, 0.2),
-        inset 0 0 10px rgba(0, 255, 195, 0.1);
+    color: #ffffff !important;
+    background: rgb(255, 42, 138) !important; 
+    border-left-color: #ffffff !important;
+    border-bottom-color: #ffffff !important;
+    
+    transform: skewX(10deg); 
+    text-shadow: 2px 2px 0px #000000;
+    
+    animation: menuGlitch 0.12s steps(2) infinite;
 }
 
+/* =========================
+ESTADO ACTIVO (PÁGINA SELECCIONADA)
+========================= */
 nav .active {
-    color: #00ffc3;
+    color: #ffffff !important;
+    background: rgb(255, 42, 138) !important; 
+    border-left: 3px solid #ffffff !important;
+    border-bottom: 1px solid #000000 !important;
+    transform: skewX(-10deg);
+    text-shadow: 2px 2px 0px #000000 !important;
+}
 
-    border: 1px solid rgba(0, 255, 195, 0.6);
+/* =========================
+ANIMACIÓN DE PARPADEO CRT VIOLETA/ROSA
+========================= */
+@keyframes menuGlitch {
+    0% { background: rgb(255, 42, 138); }
+    50% { background: rgb(138, 43, 226); } 
+    100% { background: rgb(255, 42, 138); }
+}
 
-    background: rgba(0, 255, 195, 0.08);
-
-    box-shadow:
-        0 0 12px rgba(0,255,195,0.3),
-        inset 0 0 12px rgba(0,255,195,0.15);
+/* =========================
+ANIMACIÓN DE PARPADEO ARCADE
+========================= */
+@keyframes arcadeBlink {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
 }
 .icons {
     font-size: 18px;
@@ -235,7 +243,10 @@ nav .active {
     gap: 15px;
 }
 
+
+
 header .category-card {
+    font-family: 'Pixelify Sans', sans-serif;
     padding: 8px 16px;
     font-size: 12px;
     cursor: pointer;
@@ -254,6 +265,7 @@ header .category-card:hover {
     border: 1px solid rgba(0,255,195,0.5);
     background: rgba(0,255,195,0.05);
 }
+
 /*========
 BOTÓN DEL CARRITO 
 =========*/
@@ -278,11 +290,12 @@ BOTÓN DEL CARRITO
     background: rgba(255,255,255,0.1);
 }
 
-.cart-svg {
-    width: 18px;
-    height: 18px;
+.cart-img {
+    width: 30px;
+    height: auto;
+    image-rendering: pixelated;
+    display: block;
 }
-
 .cart-text {
     font-size: 13px;
 }
@@ -303,6 +316,13 @@ BOTÓN DEL CARRITO
 /* =========================
 HERO SECTION
 ========================= */
+.logo-dkl {
+    width: 400px;
+    height: auto;
+    image-rendering: pixelated;
+
+}
+
 
 .hero {
     height: 100vh;
@@ -310,10 +330,23 @@ HERO SECTION
     display: flex;
     align-items: center;
     padding: 0 60px;
-
     background: url("imagenpagina.png");
     background-attachment: fixed;
     background-size: cover;
+    background-position: center 20%;
+}
+
+
+.hero2 {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    background: url("imagenpagina2.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 20%;
 }
 .overlay {
     position: absolute;
@@ -324,68 +357,72 @@ HERO SECTION
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 700px;
-}
 
-.hero-content h1 {
-    font-size: clamp(5rem, 11vw, 10rem);
-    line-height: 0.88;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: -3px;
-    text-shadow: 7px 7px 0 #114862;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-content p {
-    margin: 24px 0;
-    max-width: 420px;
-    color: #b7b7b7;
-    font-size: 14px;
-    line-height: 1.6;
+    margin-top: 20px;
+
+    color: white;
+
+    font-size: 18px;
+
     text-transform: uppercase;
+
+    text-shadow:
+        3px 3px 0 #000;
 }
 
-
 /* =========================
-BOTONES GENERALES
+BOTONES RETRO
 ========================= */
+
 .btn {
     display: inline-block;
     padding: 14px 28px;
+
+    background: #7d6cff;
+    color: white;
+
+    border: 4px solid #000;
+
     font-size: 12px;
     letter-spacing: 2px;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(90deg, #7d6cff, #b4a3ff);
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+
+    box-shadow:
+        4px 0 0 #000,
+        0 4px 0 #000,
+        4px 4px 0 #000;
+
+    transition: none;
+
+    image-rendering: pixelated;
+}
+
+.btn:hover {
+    transform: translate(2px, 2px);
+
+    box-shadow:
+        2px 0 0 #000,
+        0 2px 0 #000,
+        2px 2px 0 #000;
 }
 
 .btn::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
-    transform: translateX(-100%);
-}
-
-.btn:hover::after {
-    transform: translateX(100%);
-    transition: 0.6s;
+    display: none;
 }
 
 .btn.light {
-    background: #fff;
+    background: #ffffff;
     color: #000;
 }
 
 .btn.dark {
-    background: #111;
-    border: 1px solid #333;
+    background: #111111;
+    color: #ffffff;
 }
 
 .buttons {
@@ -396,21 +433,20 @@ BOTONES GENERALES
 /* =========================
 SECCIONES GENERALES
 ========================= */
+
 .arrivals,
-.archive,
 .categories,
 .featured-products,
 .reviews {
-    padding: 80px 60px;
+    padding: 70px 60px;
 }
-
 
 .small-title {
     margin-bottom: 12px;
     font-size: 11px;
-    color: #7d6cff;
+    color: #00ffc3;
     letter-spacing: 2px;
-    opacity: 0.7;
+    text-transform: uppercase;
 }
 
 .section-title,
@@ -418,150 +454,518 @@ SECCIONES GENERALES
 .categories h2,
 .featured-products h2 {
     margin-bottom: 35px;
+
     font-size: 3rem;
     font-weight: 900;
-    font-style: italic;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        4px 4px 0 #000;
 }
 
+
 /* =========================
-GRID / CARDS
+GRID RECONFIGURADO
 ========================= */
 .grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 220px 180px;
-    gap: 18px;
+    /* Mantenemos las 3 columnas, pero con un reparto más equitativo si es necesario */
+    grid-template-columns: 1.5fr 1fr 1fr; 
+    /* Subimos drásticamente el alto de las filas (antes eran 220px y 180px) */
+    grid-template-rows: 320px 280px; 
+    gap: 20px;
 }
 
+/* =========================
+CARDS RETRO 
+========================= */
 .card {
     position: relative;
-    min-height: 180px;
-    padding: 20px;
-    background: linear-gradient(145deg, #111, #1a1a1a);
-    border: 1px solid #1f1f1f;
-    transition: transform 0.35s ease, border 0.35s ease, box-shadow 0.35s ease;
+    height: 100%;       /* Obliga a la tarjeta a llenar el nuevo alto del grid */
+    padding: 25px 0 0 0; 
+
+    background: #0b0c10;
+    border: 3px solid #fafafa;
+    
+    box-shadow:
+        4px 4px 0px #000000,
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+    image-rendering: pixelated;
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.card:hover {
-    transform: translateY(-6px) scale(1.02);
-    border: 1px solid rgb(0, 255, 195);
-    box-shadow: 0 0 25px rgba(0, 255, 208, 0.15);
-}
-
+/* Modificamos el comportamiento de las tarjetas especiales para que no se deformen horizontalmente */
 .card.large {
-    grid-row: span 2;
+    grid-row: span 2; /* Ocupa las dos filas verticalmente, haciéndola un póster vertical perfecto */
 }
 
 .card.wide {
-    grid-column: span 2;
+    grid-column: span 2; /* Sigue siendo ancha, pero al tener filas más altas ya no parecerá una línea delgada */
 }
 
-.card span {
+.card:hover {
+    border-color: var(--primary);
+    box-shadow:
+        4px 4px 0px #000000,
+        0 0 15px rgba(0, 255, 195, 0.3);
+}
+
+/* Corte falso pixelado en la esquina */
+.card::after {
+    content: "";
     position: absolute;
-    left: 20px;
-    bottom: 20px;
-    font-size: 1.4rem;
-    font-weight: 800;
-    font-style: italic;
+    top: -1px;
+    right: -1px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg); /* Usa el color de fondo de la app */
+    border-left: 3px solid #fafafa;
+    border-bottom: 3px solid #fafafa;
+    z-index: 5;
+}
+.card:hover::after {
+    border-color: var(--primary);
 }
 
+/* Barra superior de interfaz */
+.card::before {
+    content: "SYS_STATUS: READY // ITEM_DISPLAY";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    background: #0b0c10; /* Color sólido para que no transparente la imagen debajo */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    color: var(--text-dim);
+    padding-left: 10px;
+    line-height: 18px;
+    letter-spacing: 1px;
+    z-index: 4;
+}
+
+/* =========================
+FOTOS DE LA ROPA (ADAPTADAS AL RECUADRO)
+========================= */
+.card-img-wear {
+    /* 👇 Estas líneas hacen que la imagen ocupe todo el recuadro sin deformarse 👇 */
+    position: absolute;
+    top: 18px; /* Comienza justo abajo de la barra superior */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 18px); /* Ocupa todo el alto restante de la tarjeta */
+    object-fit: cover; /* Recorta y ajusta la imagen para llenar el contenedor */
+    object-position: center top; /* Centra la imagen y enfoca la parte superior (cuello/pecho) */
+    
+    z-index: 1; /* Por debajo del texto de info */
+    filter: grayscale(15%);
+    transition: filter 0.3s ease;
+}
+
+.card:hover .card-img-wear {
+    filter: grayscale(0%);
+}
+
+/* =========================
+CONTENEDOR DE INFORMACIÓN (ABAJO)
+========================= */
+.card-info {
+    position: relative;
+    margin-top: auto; /* Empuja el contenedor al fondo de la tarjeta flexbox */
+    z-index: 3; /* Por encima de la imagen */
+    background: rgba(11, 12, 16, 0.85); /* Fondo oscuro semi-transparente */
+    backdrop-filter: blur(6px); /* Difumina la imagen detrás */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Forzamos que el texto no herede posiciones absolutas viejas */
+.card-info span {
+    position: static !important; 
+    color: #ffffff;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.card-price {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--primary) !important;
+    font-weight: bold;
+}
+
+/* Código de barras / Modelo (Rosa) */
+.card-serial {
+    position: absolute;
+    top: 24px;
+    right: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    color: var(--accent);
+    font-weight: bold;
+    z-index: 4;
+    background: #0b0c10;
+    padding: 2px 6px;
+    border: 1px solid rgba(255, 42, 138, 0.4);
+}
 /* =========================
 BARRA DE BÚSQUEDA
 ========================= */
-.search-bar {
-    display: flex;
-    justify-content: center;
-     margin-top: 60px; /* empuja hacia abajo */
-    margin-bottom: 40px;
-}
-.search-bar input {
-    width: 60%;
-    padding: 15px 20px;
-    background: #111;
-    border: 1px solid #2a2a2a;
-    border-radius: 6px;
-    color: white;
-    font-size: 16px;
-    outline: none;
-}
-
-.search-bar input:focus {
-    border: 1px solid #1ca295c7;
-    box-shadow: 0 0 10px rgba(49, 192, 192, 0.553);
+/* =========================
+CONTENEDOR
+========================= */
+.search-container {
+    position: relative;
 }
 
 /* =========================
-CATEGORÍAS
+BOTÓN LUPA
+========================= */
+.search-btn {
+
+    background: transparent;
+    border: none;
+
+    color: #00ffc3;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.search-btn:hover {
+
+    transform: scale(1.1);
+
+    text-shadow:
+        0 0 10px #00ffc3,
+        0 0 20px rgba(0,255,195,0.5);
+}
+
+/* =========================
+BARRA OCULTA
+========================= */
+.search-bar {
+
+    position: absolute;
+
+    top: 70px;
+    right: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition: 0.3s ease;
+}
+
+/* ACTIVA */
+.search-bar.active {
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+/* INPUT */
+.search-bar input {
+
+    width: 260px;
+
+    padding: 10px 16px;
+
+    background: rgba(15,15,20,0.9);
+
+    border: 1px solid rgba(0,255,195,0.2);
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-size: 14px;
+
+    outline: none;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+}
+
+/* FOCUS */
+.search-bar input:focus {
+
+    border: 1px solid #00ffc3;
+
+    box-shadow:
+        0 0 10px rgba(0,255,195,0.3),
+        0 0 30px rgba(0,255,195,0.1);
+}
+/* =========================
+CATEGORÍAS - ESTILO DATA CARTRIDGE (VA-11 HALL-A)
+========================= */
+/* =========================
+CATEGORÍAS - ESTILO DATA CARTRIDGE (VA-11 HALL-A)
 ========================= */
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.category-card {
-    padding: 50px 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 800;
+/* 👇 USAMOS LA NUEVA CLASE EXCLUSIVA PARA QUE EL HEADER NO SE ENTERE */
+.data-cartridge {
+    position: relative;
+    height: 180px; 
+    padding: 20px;
     cursor: pointer;
-    background: linear-gradient(145deg, #111, #1a1a1a);
-    border: 1px solid #1f1f1f;
-    transition: 0.3s ease;
+    
+    background: #12131a; 
+    border: 4px solid #000000;
+    
+    box-shadow:
+        4px 4px 0px #000000,
+        inset 0 0 0 2px rgba(255, 42, 138, 0.2);
+
+    image-rendering: pixelated;
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+    transition: all 0.2s steps(4); 
 }
 
-.category-card:hover {
-    transform: translateY(-5px);
-    border: 1px solid #00ffd0;
-    box-shadow: 0 0 12px rgba(0, 255, 208, 0.2);
+.data-cartridge:hover {
+    transform: translate(2px, 2px);
+    border-color: var(--accent); 
+    background: #1a1520;
+    box-shadow:
+        2px 2px 0px #000000,
+        0 0 15px rgba(255, 42, 138, 0.4);
 }
 
+.cat-slot {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+.data-cartridge:hover .cat-slot {
+    color: var(--primary); 
+}
+
+.cat-title {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px #000;
+    line-height: 1.2;
+}
+.data-cartridge:hover .cat-title {
+    color: var(--accent);
+}
+
+.cat-tech {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    color: var(--primary); 
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.data-cartridge::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg); 
+    border-left: 4px solid #000000;
+    border-top: 4px solid #000000;
+    z-index: 2;
+}
+.data-cartridge:hover::after {
+    border-left-color: var(--accent);
+    border-top-color: var(--accent);
+}
 /* =========================
-PRODUCTOS
+PRODUCTOS DESTACADOS - INVENTORY LOADOUT
 ========================= */
+.featured-products {
+    padding: 70px 60px;
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 24px;
 }
 
+/* LA TARJETA: Celda de datos de inventario */
 .product-card {
-    padding: 20px;
-    background: #111;
-    border: 1px solid #1f1f1f;
-    transition: 0.3s ease;
+    position: relative;
+    padding: 30px 16px 16px 16px; /* Espacio arriba para la barra de estado */
+    background: rgba(20, 15, 30, 0.85); /* Fondo violeta oscuro traslúcido como tu menú */
+    
+    /* Borde negro duro pixelado con sombra sólida retro */
+    border: 3px solid #000000;
+    box-shadow: 4px 4px 0px #000000;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    image-rendering: pixelated;
+    overflow: hidden;
+    transition: none; /* Cuadros por segundo puros sin suavizado moderno */
 }
 
-.product-card:hover {
-    transform: scale(1.02);
-    border: 1px solid rgb(0, 255, 195);
+/* INTERFAZ ESTÁTICA SUPERIOR (Barra de sistema fija en cada producto) */
+.product-card::before {
+    content: "DATA_NODE: ONLINE // ITEM_DISPLAY";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: #000000;
+    border-bottom: 1px solid rgba(138, 43, 226, 0.4); /* Línea violeta */
+    
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    color: #7a8892; /* Tu color --text-dim */
+    padding-left: 10px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    z-index: 4;
 }
 
+/* DETALLE EXTRA: Indicador de Modelo en rosa neón (hace match con tu captura anterior) */
+.product-card::after {
+    content: "MODEL: RIG_SYS";
+    position: absolute;
+    top: 0;
+    right: 12px;
+    height: 20px;
+    
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    font-weight: bold;
+    color: var(--accent); /* Tu rosa neón balanceado */
+    line-height: 20px;
+    letter-spacing: 1px;
+    z-index: 5;
+}
+
+/* FOTOS DE LOS PRODUCTOS */
 .product-card img {
     width: 100%;
-    height: 300px;
+    height: 280px;
     object-fit: cover;
+    border: 2px solid #000000;
+    
+    /* En reposo: un sutil filtro frío para acoplarse a la noche */
+    filter: grayscale(20%) brightness(90%);
+    image-rendering: pixelated;
+    z-index: 1;
 }
 
+/* TEXTOS INTERNOS: Nombre del producto */
 .product-card h3 {
     margin-top: 15px;
-    font-size: 1.2rem;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #000;
 }
 
+/* TEXTOS INTERNOS: Precio */
 .product-card p {
-    margin: 10px 0;
-    color: rgb(0, 255, 195);
+    margin: 6px 0 15px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
     font-weight: bold;
+    color: var(--text); /* Tu color azul/lavanda de sistema */
 }
 
+/* BOTÓN RETRO: ACCIÓN DE COMPRA (AGREGAR) */
 .product-card button {
     width: 100%;
-    padding: 12px;
-    background: linear-gradient(90deg, #7d6cff, #b4a3ff);
-    color: white;
-    border: none;
-    cursor: pointer;
+    padding: 10px;
+    
+    /* Plástico industrial oscuro en reposo */
+    background: #12131a; 
+    color: var(--text-dim);
+    
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 11px;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0px #000000;
+    
+    cursor: pointer;
+    transition: none;
+    image-rendering: pixelated;
+}
+
+/* =========================
+COMPORTAMIENTO INTERACTIVO (HOVER EN TARJETA)
+========================= */
+.product-card:hover {
+    /* Ilumina el marco en el violeta limpio de tu paleta */
+    border-color: var(--secondary);
+    box-shadow: 4px 4px 0px #000000, 0 0 15px rgba(138, 43, 226, 0.3);
+}
+
+/* La imagen recobra su color original al enfocarla */
+.product-card:hover img {
+    filter: grayscale(0%) brightness(100%);
+}
+
+/* El botón se enciende en Rosa Neón (idéntico al logo DKL) */
+.product-card:hover button {
+    background: var(--accent); 
+    color: #ffffff;
+    border-color: #000000;
+    text-shadow: 1px 1px 0px #000;
+}
+
+/* EFECTO CLICK: El botón se hunde físicamente como un interruptor analógico */
+.product-card button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px #000000;
 }
 
 /* =========================
@@ -672,64 +1076,6 @@ RESPONSIVE
 }
 
 
-
-/* círculo principal */
-.cursor {
-    position: fixed;
-    width: 12px;
-    height: 12px;
-    background: rgb(0, 255, 208); /* cian principal */
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-
-    box-shadow:
-        0 0 6px rgba(0, 255, 208, 0.8),
-        0 0 20px rgba(0, 255, 208, 0.6),
-        0 0 40px rgba(120, 0, 255, 0.4); /* mezcla violeta */
-}
-
-/* halo */
-/* HALO PRO CYBER */
-.cursor-follower {
-    position: fixed;
-    width: 42px;
-    height: 42px;
-
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-
-    /* borde con degradado */
-    background: radial-gradient(circle, rgba(0,255,208,0.15) 0%, transparent 70%);
-
-    border: 1px solid rgba(0, 255, 208, 0.3);
-
-    /* glow multicapa */
-    box-shadow:
-        0 0 15px rgba(0,255,208,0.4),
-        0 0 35px rgba(0,255,208,0.25),
-        0 0 80px rgba(120,0,255,0.25);
-
-    backdrop-filter: blur(4px);
-
-    transition:
-        transform 0.15s ease,
-        width 0.2s ease,
-        height 0.2s ease,
-        box-shadow 0.3s ease;
-}
-a:hover ~ .cursor-follower,
-button:hover ~ .cursor-follower {
-    width: 60px;
-    height: 60px;
-
-    box-shadow:
-        0 0 20px #00ffc3,
-        0 0 50px rgba(0,255,200,0.6),
-        0 0 100px rgba(120,0,255,0.4);
-}
-
 .carrito {
     padding: 60px;
     background: #0a0a0a;
@@ -750,8 +1096,6 @@ button:hover ~ .cursor-follower {
 }
 
 
-
-
 #contador {
     position: absolute;
     top: -8px;
@@ -762,4 +1106,159 @@ button:hover ~ .cursor-follower {
     padding: 2px 6px;
     border-radius: 50%;
     box-shadow: 0 0 10px #00ffc3;
+}
+
+/* =========================
+BRUTALIST ARCHIVE - SYSTEM TERMINAL
+========================= */
+.archive {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Divide la sección en dos bloques asimétricos */
+    min-height: 550px;
+    margin: 80px 60px;
+    background: rgba(14, 11, 22, 0.9); /* Violeta ultra oscuro de base */
+    border: 4px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decoración de pestaña superior de la terminal */
+.archive::before {
+    content: "SECURE_ARCHIVE_ACCESS // STABLE_CONNECTION";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    background: #000000;
+    border-bottom: 2px solid var(--secondary);
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    color: var(--text-dim);
+    line-height: 24px;
+    padding-left: 20px;
+    letter-spacing: 2px;
+    z-index: 10;
+}
+
+/* CONTENEDOR DE TEXTO (Izquierda) */
+.archive .text {
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 4px solid #000000;
+    position: relative;
+}
+
+/* Sutiles líneas de rejilla de fondo solo para esta sección */
+.archive .text::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(138, 43, 226, 0.04) 1px, transparent 1px);
+    background-size: 100% 10px;
+    pointer-events: none;
+}
+
+.archive .small-title {
+    color: var(--accent) !important; /* Rosa neón para el código superior */
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.archive h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 0.95;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-shadow: 4px 4px 0px #000000;
+    margin-bottom: 30px;
+}
+
+/* CONTENEDOR DE LA VISTA PREVIA (Derecha) */
+.archive .preview {
+    background: #09070f; /* Fondo más oscuro para simular una pantalla apagada */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rejilla de radar vectorial en el cuadro de vista previa */
+.archive .preview::before {
+    content: "TARGET_PREVIEW_EMPTY // INSERT_DATA_CARTRIDGE";
+    position: absolute;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    color: rgba(138, 43, 226, 0.5);
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Esquinas vectoriales de enfoque (Retícula de calibración militar) */
+.archive .preview::after {
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 60%;
+    border: 1px dashed rgba(255, 42, 138, 0.2); /* Rectángulo rosa discontinuo */
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.05) 0%, transparent 70%);
+}
+
+/* RECONFIGURACIÓN DE BOTONES INDUSTRIALES */
+.archive .buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    z-index: 5;
+}
+
+.archive .btn {
+    font-family: 'Pixelify Sans', sans-serif;
+    padding: 14px 24px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+    border: 3px solid #000000;
+    box-shadow: 4px 4px 0px #000000;
+    position: relative;
+    transition: none;
+    image-rendering: pixelated;
+    display: inline-block;
+}
+
+/* Botón EXPLORE (Estilo bloque industrial de comando) */
+.archive .btn.light {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Botón LOOKBOOK (Estilo oscuro de terminal) */
+.archive .btn.dark {
+    background: #161224;
+    color: var(--text-dim);
+}
+
+/* COMPORTAMIENTO HOVER INTERACTIVO */
+.archive .btn:hover {
+    background: var(--accent) !important; /* Pasa a rosa neón inmediato */
+    color: #ffffff !important;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000000;
+}
+
+/* EFECTO SELECCIÓN DE FILA COMPLETA AL PASAR POR LA SECCIÓN */
+.archive:hover {
+    border-color: var(--secondary);
+    box-shadow: 6px 6px 0px #000000, 0 0 20px rgba(138, 43, 226, 0.2);
 }

@@ -1,0 +1,73 @@
+/* =========================
+CURSOR CYBERPUNK
+========================= */
+
+body {
+    cursor: none;
+}
+
+/* PUNTO CENTRAL */
+
+.cursor {
+
+    position: fixed;
+
+    width: 12px;
+    height: 12px;
+
+    background: #00ffd0;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 99999;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 0 6px rgba(0,255,208,0.8),
+        0 0 20px rgba(0,255,208,0.6),
+        0 0 40px rgba(120,0,255,0.4);
+        transform: translate(-50%, -50%);
+}
+
+/* HALO */
+
+.cursor-follower {
+
+    position: fixed;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 99998;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,208,0.15) 0%,
+            transparent 70%
+        );
+
+    border: 1px solid rgba(0,255,208,0.3);
+
+    box-shadow:
+        0 0 15px rgba(0,255,208,0.4),
+        0 0 35px rgba(0,255,208,0.25),
+        0 0 80px rgba(120,0,255,0.25);
+
+    backdrop-filter: blur(4px);
+
+    transition:
+        width 0.2s ease,
+        height 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
