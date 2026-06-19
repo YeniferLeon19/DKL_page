@@ -55,25 +55,6 @@ card.addEventListener("mouseleave", () => {
     card.style.transform = "none";
 });
 });
-const reveals = document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll", () => {
-    reveals.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            el.classList.add("active");
-        }
-    });
-});
-
-const cursor = document.querySelector(".cursor");
-const follower = document.querySelector(".cursor-follower");
-
-document.addEventListener("mousemove", (e) => {
-    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    
-    follower.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
-});
 
 
 let carrito = [];
@@ -149,12 +130,3 @@ function mostrarMenu(tipo) {
 
     contenido.innerHTML = html;
 }
-
-document.addEventListener("click", function(e) {
-    const menu = document.getElementById("menu-desplegable");
-
-    if (!e.target.closest("nav") && !e.target.closest("#menu-desplegable")) {
-        menu.classList.add("hidden");
-    }
-});
-

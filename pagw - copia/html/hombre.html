@@ -7,33 +7,17 @@
 <title>DKL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
 <link rel="stylesheet" href="../css/hombre.css">
+<link rel="stylesheet" href="../css/global.css">
 </head>
 
 <body>
-<header>
 
-    <div class="logo">DarK Liquid</div>
-
-    <nav class="nav-categorias">
-        <a href="index.html" class="category-card">TIENDA</a>
-        <a href="hombre.html" class="category-card">HOMBRE</a>
-        <a href="mujer.html" class="category-card">MUJER</a>
-        <div class="category-card">ACCESORIOS</div>
-    </nav>
-
-    <a href="carrito.html" class="cart-icon">
-        <svg class="cart-svg" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="9" cy="20" r="1.5" fill="currentColor"/>
-            <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
-        </svg>
-        <span class="cart-text">Carrito</span>
-        <span id="contador">0</span>
-    </a>
-
-</header>
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+<div id="header-container"></div>
 
 
 <div class="layout">
@@ -54,27 +38,54 @@
         <section class="featured-products">
             <h2>PRODUCTOS</h2>
 
-            <div class="product-grid">
+<div class="product-grid">
 
-                <div class="product-card" data-categoria="camisa">
-                <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Camisa">
-                    <h3>Camisa Oversize</h3>
-                    <p>$89.900</p>
-                </div>
+    <!-- PRODUCTO 1 -->
+    <div class="product-card" data-categoria="camisa">
 
-                <div class="product-card" data-categoria="pantalon">
-                    <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Camisa" alt ="Pantalón">
-                    <h3>Pantalón Cargo</h3>
-                    <p>$120.000</p>
-                </div>
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Camisa">
 
-                <div class="product-card" data-categoria="buso">
-                    <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Camisa"> alt="Buso">
-                    <h3>Buso Hoodie</h3>
-                    <p>$95.000</p>
-                </div>
+        <h3>Camisa Oversize</h3>
 
-            </div>
+        <p>$89.900</p>
+
+        <button onclick="agregarAlCarrito('Camisa Oversize', 89900)">
+            Agregar al carrito
+        </button>
+
+    </div>
+
+    <!-- PRODUCTO 2 -->
+    <div class="product-card" data-categoria="pantalon">
+
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Pantalón">
+
+        <h3>Pantalón Cargo</h3>
+
+        <p>$120.000</p>
+
+        <button onclick="agregarAlCarrito('Pantalón Cargo', 120000)">
+            Agregar al carrito
+        </button>
+
+    </div>
+
+    <!-- PRODUCTO 3 -->
+    <div class="product-card" data-categoria="buso">
+
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Buso">
+
+        <h3>Buso Hoodie</h3>
+
+        <p>$95.000</p>
+
+        <button onclick="agregarAlCarrito('Buso Hoodie', 95000)">
+            Agregar al carrito
+        </button>
+
+    </div>
+
+</div>
 
         </section>
 
@@ -82,5 +93,8 @@
 
 </div>
 <script src="../js/hombre.js"></script>
+<script src="../js/carrito.js"></script>
+<script src="../js/cursor.js"></script>
+<script src="../js/header.js"></script>
 </body>
 </html>

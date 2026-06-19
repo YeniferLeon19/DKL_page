@@ -1,84 +1,114 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>DKL</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../css/global.css">
 <link rel="stylesheet" href="../css/pag.css">
 </head>
+
 <body>
 
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
-
-<header>
-
-    <div class="logo">DarK Liquid</div>
-
-    <nav class="nav-categorias">
-        <a href="index.html" class="category-card">TIENDA</a>
-        <a href="hombre.html" class="category-card">HOMBRE</a>
-        <a href="mujer.html" class="category-card">MUJER</a>
-        <div class="category-card">ACCESORIOS</div>
-    </nav>
-
-    <a href="carrito.html" class="cart-icon">
-        <svg class="cart-svg" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="9" cy="20" r="1.5" fill="currentColor"/>
-            <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
-        </svg>
-        <span class="cart-text">Carrito</span>
-        <span id="contador">0</span>
-    </a>
-
-</header>
+<div id="header-container"></div>
 
 
 <div class="cyber-grid"></div>
 
-<div class="search-bar">
-    <input type="text" placeholder="Buscar productos...">
-</div>
-
 
 <section class="hero">
     <div class="overlay"></div>
+
     <div class="hero-content">
-    <h1>DKL</h1>
-    <p>La próxima distribuidora que tu closet necesita</p>
-    <a href="#" class="btn">¡COMPRA AHORA!</a>
+        <img src="logo.png" alt="DKL" class="logo-dkl">
+        <p>¡Hackea tu estilo con esta distribuidora!</p>
     </div>
+
 </section>
 
 <section class="arrivals">
     <p class="small-title">D1 / RELEASES</p>
-    <h2 class="section-title">NEW ARRIVALS</h2>
+    <h2 class="section-title">RECOMENDADOS FEMENINOS</h2>
+    
     <div class="grid">
-    <div class="card large"><span>ONYX SHELL V2</span></div>
-    <div class="card"><span>PULSE RUNNER</span></div>
-    <div class="card"><span>RIG_04 VEST</span></div>
-    <div class="card wide"><span>ACCESSORIES_LAB</span></div>
+        <div class="card large">
+            <div class="card-serial">MODEL: ONX-V2</div>
+            <img src="ropa.jpg" alt="ONYX SHELL V2" class="card-img-wear">
+            <div class="card-info">
+                <span>ONYX SHELL V2</span>
+                <span class="card-price">$120.00 Credits</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-serial">MODEL: PLS-RN</div>
+            <img src="ropa2.jpg" alt="PULSE RUNNER" class="card-img-wear">
+            <div class="card-info">
+                <span>PULSE RUNNER</span>
+                <span class="card-price">$85.00 Credits</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-serial">MODEL: RIG-04</div>
+            <img src="ropa3.jpg" alt="RIG_04 VEST" class="card-img-wear">
+            <div class="card-info">
+                <span>RIG_04 VEST</span>
+                <span class="card-price">$95.00 Credits</span>
+            </div>
+        </div>
+
+        <div class="card wide">
+            <div class="card-serial">MODEL: ACC-LAB</div>
+            <img src="ropa4.jpg" alt="ACCESSORIES_LAB" class="card-img-wear">
+            <div class="card-info">
+                <span>ACCESSORIES_LAB</span>
+                <span class="card-price">$45.00 Credits</span>
+            </div>
+        </div>
     </div>
 </section>
 
-
 <section class="categories">
-    <h2>CATEGORÍAS</h2>
+    <h2>¡NUEVO!</h2>
     <div class="category-grid">
-        <div class="category-card">HOMBRE</div>
-        <div class="category-card">MUJER</div>
-        <div class="category-card">ACCESORIOS</div>
-        <div class="category-card">OFERTAS</div>
+        <div class="data-cartridge">
+            <div class="cat-slot">[SLOT_01]</div>
+            <span class="cat-title">CHAQUETAS</span>
+            <div class="cat-tech">// OUTERWEAR_SYS</div>
+        </div>
+
+        <div class="data-cartridge">
+            <div class="cat-slot">[SLOT_02]</div>
+            <span class="cat-title">PANTALONES</span>
+            <div class="cat-tech">// BOTTOM_CORE</div>
+        </div>
+
+        <div class="data-cartridge">
+            <div class="cat-slot">[SLOT_03]</div>
+            <span class="cat-title">ACCESORIOS</span>
+            <div class="cat-tech">// EXT_MODULES</div>
+        </div>
+
+        <div class="data-cartridge">
+            <div class="cat-slot">[SLOT_04]</div>
+            <span class="cat-title">CALZADO</span>
+            <div class="cat-tech">// BOOT_SECTOR</div>
+        </div>
     </div>
+</section>
+
+<section class="hero2">
+    <div class="overlay"></div>
 </section>
 
 <section class="featured-products">
-    <h2>PRODUCTOS DESTACADOS</h2>
+    <h2>PRODUCTOS DESTACADOS MASCULINOS</h2>
     <div class="product-grid">
 
         <div class="product-card">
@@ -112,7 +142,6 @@
     <div class="text">
     <p class="small-title">D2 / CURATED</p>
     <h2>BRUTALIST<br>ARCHIVE</h2>
-    <p></p>
     <div class="buttons">
         <a href="#" class="btn light">EXPLORE COLLECTION</a>
         <a href="#" class="btn dark">LOOKBOOK</a>
@@ -143,5 +172,7 @@
 
 
 <script src="../js/detalles.js"></script>
+<script src="../js/cursor.js"></script>
+<script src="../js/header.js"></script>
 </body>
 </html>

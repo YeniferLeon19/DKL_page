@@ -1,3 +1,16 @@
+:root{
+    --pink: #ff4fd8;
+    --purple: #b266ff;
+    --blue: #6ee7ff;
+
+    --bg: #09070f;
+    --card: rgba(25,18,35,0.75);
+
+    --text: #f5eaff;
+    --text-dim: rgba(255,255,255,0.65);
+}
+
+
 /* =========================
 FONDO TECNOLÓGICO RETRO CYBER
 ========================= */
@@ -18,11 +31,13 @@ body::before {
     inset: 0;
 
     background:
-        radial-gradient(circle at 30% 40%, rgba(0,255,200,0.15), transparent 50%),
-        radial-gradient(circle at 70% 60%, rgba(140,0,255,0.15), transparent 50%);
+        radial-gradient(circle at 20% 30%, rgba(255,79,216,0.18), transparent 40%),
+        radial-gradient(circle at 80% 60%, rgba(178,102,255,0.18), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(110,231,255,0.10), transparent 40%);
 
-    filter: blur(80px);
-    animation: energia 10s infinite alternate ease-in-out;
+    filter: blur(90px);
+
+    animation: energia 12s infinite alternate ease-in-out;
 
     z-index: -3;
 }
@@ -34,18 +49,17 @@ body::after {
     inset: 0;
 
     background-image:
-        linear-gradient(rgba(0,255,200,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,200,0.08) 1px, transparent 1px);
+        linear-gradient(rgba(255,79,216,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(178,102,255,0.06) 1px, transparent 1px);
 
     background-size: 60px 60px;
 
     transform: perspective(800px) rotateX(60deg);
 
-    animation: gridMove 8s linear infinite;
+    animation: gridMove 10s linear infinite;
 
     z-index: -2;
 }
-
 /* CAPA 3: SCANLINES CRT */
 body {
     background-image: repeating-linear-gradient(
@@ -117,13 +131,13 @@ font-family: 'Inter', sans-serif;
 nav a:hover {
     color: #fff;
 
-    border: 1px solid rgba(0, 255, 195, 0.4);
+    border: 1px solid rgba(255,79,216,0.5);
 
-    background: rgba(0, 255, 195, 0.05);
+    background: rgba(255,79,216,0.08);
 
     box-shadow:
-        0 0 10px rgba(0, 255, 195, 0.2),
-        inset 0 0 10px rgba(0, 255, 195, 0.1);
+        0 0 10px rgba(255,79,216,0.35),
+        0 0 20px rgba(178,102,255,0.25);
 }
 
 nav .active {
@@ -317,27 +331,41 @@ ANIMACIONES
 .sidebar button {
     display: block;
     width: 100%;
-    margin-bottom: 12px;
-    padding: 12px;
+    margin-bottom: 14px;
+    padding: 13px;
 
-    background: transparent;
-    border: 1px solid rgba(0,255,200,0.3);
-    color: #00ffc3;
+    background: rgba(255,255,255,0.03);
+
+    border: 1px solid rgba(255,79,216,0.35);
+
+    color: #ffd9fa;
+
+    border-radius: 14px;
 
     cursor: pointer;
     transition: 0.3s;
 
     position: relative;
     overflow: hidden;
-}
 
+    backdrop-filter: blur(10px);
+}
 /* EFECTO HOVER GLOW */
 .sidebar button:hover {
-    background: #00ffc3;
-    color: #000;
-    box-shadow: 0 0 15px #00ffc3, 0 0 40px rgba(0,255,200,0.5);
-}
+    background: linear-gradient(
+        135deg,
+        rgba(255,79,216,0.25),
+        rgba(178,102,255,0.25)
+    );
 
+    color: white;
+
+    box-shadow:
+        0 0 15px rgba(255,79,216,0.5),
+        0 0 35px rgba(178,102,255,0.35);
+
+    transform: translateX(5px);
+}
 /* LINEA ANIMADA */
 .sidebar button::before {
     content: "";
@@ -414,25 +442,44 @@ ANIMACIONES
 /* 🔥 TARJETAS CYBER */
 .product-card {
     padding: 20px;
-    background: rgba(15,15,20,0.7);
-    border: 1px solid rgba(0,255,200,0.15);
 
-    backdrop-filter: blur(10px);
+    background: rgba(22,18,35,0.72);
 
-    transition: 0.3s;
+    border: 1px solid rgba(255,79,216,0.2);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(14px);
+
+    transition: 0.35s;
+
     position: relative;
+
+    overflow: hidden;
 }
 
 /* GLOW AL PASAR */
 .product-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    border: 1px solid #00ffc3;
-    box-shadow: 0 0 20px rgba(0,255,200,0.3);
+    transform: translateY(-8px) scale(1.03);
+
+    border: 1px solid rgba(255,79,216,0.7);
+
+    box-shadow:
+        0 0 20px rgba(255,79,216,0.35),
+        0 0 40px rgba(178,102,255,0.25);
 }
 
 /* TEXTO */
 .product-card h3 {
-    margin-bottom: 10px;
+    color: #ffd6fb;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 8px rgba(255,79,216,0.7),
+        0 0 20px rgba(178,102,255,0.45);
 }
 
 .product-card p {
@@ -468,8 +515,23 @@ ANIMACIONES
         0 0 5px #00ffc3,
         0 0 15px rgba(0,255,200,0.6);
 }
+
+.product-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.06),
+        transparent 40%
+    );
+
+    pointer-events:none;
+}
+
 /* =========================
-BOTÓN GAMER MASCULINO
+BOTÓN AGREGAR AL CARRITO
 ========================= */
 
 .product-card button {
@@ -478,43 +540,42 @@ BOTÓN GAMER MASCULINO
     margin-top: 18px;
     padding: 14px;
 
-    border: 1px solid rgba(0,255,255,0.18);
-    border-radius: 14px;
+    border: none;
+    border-radius: 16px;
 
     cursor: pointer;
 
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 2px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
     text-transform: uppercase;
 
-    color: #dffcff;
+    color: white;
 
-    background:
-        linear-gradient(
-            135deg,
-            #0f1729,
-            #131c35,
-            #1d1145
-        );
+    background: linear-gradient(
+        135deg,
+        #ff4fd8,
+        #b266ff,
+        #6ee7ff
+    );
+
+    background-size: 200% 200%;
+
+    box-shadow:
+        0 0 12px rgba(255,79,216,0.35),
+        0 0 25px rgba(178,102,255,0.25);
+
+    transition: 
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-position 0.6s ease;
 
     position: relative;
     overflow: hidden;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border 0.25s ease;
-
-    box-shadow:
-        0 0 10px rgba(0,255,255,0.08),
-        inset 0 0 15px rgba(255,255,255,0.03);
-
-    backdrop-filter: blur(10px);
 }
 
-/* BRILLO ANIMADO */
+/* EFECTO BRILLO */
 .product-card button::before {
 
     content: "";
@@ -523,13 +584,13 @@ BOTÓN GAMER MASCULINO
     top: 0;
     left: -120%;
 
-    width: 70%;
+    width: 80%;
     height: 100%;
 
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(0,255,255,0.28),
+        rgba(255,255,255,0.35),
         transparent
     );
 
@@ -538,52 +599,42 @@ BOTÓN GAMER MASCULINO
     transition: 0.7s;
 }
 
-/* EFECTO HOVER */
+/* HOVER */
 .product-card button:hover {
 
-    transform: translateY(-4px);
+    transform: translateY(-3px) scale(1.03);
 
-    border: 1px solid rgba(0,255,255,0.55);
+    background-position: right center;
 
     box-shadow:
-        0 0 18px rgba(0,255,255,0.25),
-        0 0 45px rgba(111,0,255,0.25);
-
-    color: white;
+        0 0 18px rgba(255,79,216,0.6),
+        0 0 40px rgba(178,102,255,0.4);
 }
 
 .product-card button:hover::before {
-    left: 150%;
+    left: 140%;
 }
 
 /* CLICK */
 .product-card button:active {
-    transform: scale(0.96);
+    transform: scale(0.97);
 }
 
-/* LINEA INFERIOR FUTURISTA */
+/* EFECTO GLASS */
 .product-card button::after {
 
     content: "";
 
     position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    width: 0%;
-    height: 2px;
+    inset: 0;
 
     background: linear-gradient(
-        90deg,
-        #00ffff,
-        #8b5cf6
+        to top,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.18)
     );
 
-    transition: 0.35s;
-}
+    border-radius: 16px;
 
-.product-card button:hover::after {
-    width: 100%;
+    pointer-events: none;
 }
-

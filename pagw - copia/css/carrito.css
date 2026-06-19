@@ -1,41 +1,12 @@
 /* PANEL PRINCIPAL */
 body {
     background: radial-gradient(circle at center, #050505, #000);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Pixelify Sans', sans-serif;
     color: #00ffc3;
 
 }
 
-.cursor {
-    position: fixed;
-    width: 12px;
-    height: 12px;
-    background: rgb(0, 255, 208);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
 
-    box-shadow:
-        0 0 6px rgba(0, 255, 208, 0.8),
-        0 0 20px rgba(0, 255, 208, 0.6),
-        0 0 40px rgba(120, 0, 255, 0.4);
-}
-
-.cursor-follower {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(0, 255, 208, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-
-    box-shadow:
-        0 0 20px rgba(0, 255, 208, 0.3),
-        0 0 60px rgba(120, 0, 255, 0.25);
-
-    backdrop-filter: blur(2px);
-}
 /* TÍTULO */
 /* TÍTULO CYBERPUNK */
 h1 {
