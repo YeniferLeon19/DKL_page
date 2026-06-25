@@ -1,0 +1,288 @@
+/* =========================
+HEADER / NAVBAR
+========================= */
+.main-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 40px;
+    box-sizing: border-box;
+
+    background: rgba(13,13,13,.8);
+    backdrop-filter: blur(12px);
+
+    z-index: 9999;
+}
+
+.main-header .scrolled {
+    background: rgba(13, 13, 13, 0.85);
+    border-bottom: 1px solid rgba(0, 255, 195, 0.25);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--text);
+}
+
+.main-header nav{
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+    margin-left:60px;
+}
+
+.main-header nav a {
+    text-decoration: none;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    position: relative;
+    padding: 8px 0; /* Controlamos el alto con padding vertical */
+    
+    /* 👇 EL TRUCO DE DISTRIBUCIÓN: Ancho fijo para que todos midan igual 👇 */
+    min-width: 140px; 
+    /* Centra el texto perfectamente dentro del bloque inclinado */
+    justify-content: center; 
+
+    /* REPOSO: Texto en color lavanda/azul difuminado de la ilustración */
+    color: #7a8892 !important; 
+    
+    /* Fondo inclinado de pestaña militar/mecha en violeta muy oscuro traslúcido */
+    background: rgba(20, 15, 30, 0.8) !important; 
+    
+    /* Borde izquierdo en violeta limpio */
+    border-left: 3px solid rgb(138, 43, 226) !important;
+    border-bottom: 1px solid rgba(138, 43, 226, 0.2) !important;
+    
+    transform: skewX(-10deg); 
+    
+    border-top: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    
+    transition: none; 
+    display: inline-flex;
+    align-items: center;
+}
+
+/* CÓDIGO SUBYACENTE ESTÁTICO (Hexadecimal de sistema en la esquina) */
+.main-header nav a::before {
+    content: "SYS_x0" counter(menu-counter);
+    position: absolute;
+    top: -10px;
+    /* Alineado con el inicio del borde del botón */
+    left: 4px; 
+    font-family: 'Courier New', monospace;
+    font-size: 7px;
+    color: #7a8892;
+    opacity: 0.5;
+    transform: skewX(10deg); 
+}
+
+/* Configuración de contador automático */
+.main-header nav {
+    counter-reset: menu-counter;
+}
+.main-header nav a {
+    counter-increment: menu-counter;
+}
+
+/* =========================
+DINAMISMO ULTRA-RETRO (AL PASAR EL MOUSE)
+========================= */
+.main-header nav a:hover {
+    color: #ffffff !important;
+    background: rgb(255, 42, 138) !important; 
+    border-left-color: #ffffff !important;
+    border-bottom-color: #ffffff !important;
+    
+    transform: skewX(10deg); 
+    text-shadow: 2px 2px 0px #000000;
+    
+    animation: menuGlitch 0.12s steps(2) infinite;
+}
+.header-right{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/*========
+BOTÓN DEL CARRITO 
+=========*/
+
+.main-header .cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+
+    color: white;
+    font-size: 18px;
+
+    transition: 0.2s;
+    margin-left:auto;
+}
+
+.main-header .cart-icon:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.main-header .cart-img {
+    width: 30px;
+    height: auto;
+    image-rendering: pixelated;
+    display: block;
+}
+.main-header .cart-text {
+    font-size: 13px;
+}
+
+/* =====================================
+    BUSCADOR RETRO CYBERPUNK
+===================================== */
+
+.main-header .search-container{
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+/* =====================================
+    BOTÓN LUPA
+===================================== */
+.main-header .search-icon{
+    width:45px;
+    height:45px;
+
+    display: block;
+
+    image-rendering: pixelated;
+}
+.main-header .search-btn {
+    width: 100px;
+    height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+
+
+    background: #12131a;
+    border: 3px solid #000;
+
+    color: #00ffc3;
+    font-size: 18px;
+
+    cursor: pointer;
+
+    box-shadow: 3px 3px 0 #000;
+
+    image-rendering: pixelated;
+
+    transition: 0.15s;
+}
+
+.main-header .search-btn:hover {
+    background: #1d2030;
+    color: #ffffff;
+
+    box-shadow:
+        3px 3px 0 #000,
+        0 0 10px rgba(0,255,195,.4);
+}
+
+.main-header .search-btn:active {
+    transform: translate(2px,2px);
+    box-shadow: 1px 1px 0 #000;
+}
+
+
+.main-header .search-bar {
+
+    position: absolute;
+
+    top: 55px;
+    right: 0;
+
+    width: 300px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition: .25s;
+
+    z-index: 999;
+}
+
+.main-header .search-bar.active {
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+.main-header .search-bar input {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    background: #12131a;
+
+    border: 3px solid #000;
+
+    color: #00ffc3;
+
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    box-shadow:
+        4px 4px 0 #000,
+        inset 0 0 0 1px rgba(138,43,226,.4);
+
+    outline: none;
+
+    image-rendering: pixelated;
+}
+
+.main-header .search-bar input::placeholder {
+
+    color: #7a8892;
+    text-transform: uppercase;
+}
+
+
+.main-header .search-bar input:focus {
+
+    border-color: rgb(138,43,226);
+
+    box-shadow:
+        4px 4px 0 #000,
+        0 0 15px rgba(138,43,226,.5);
+}
