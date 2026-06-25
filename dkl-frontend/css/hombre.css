@@ -69,6 +69,214 @@ body {
 
 
 /* =========================
+<<<<<<< HEAD
+=======
+HEADER / NAVBAR
+========================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 40px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(13, 13, 13, 0.6);
+    backdrop-filter: blur(12px);
+
+    z-index: 100;
+    transition: 0.3s ease;
+}
+
+header.scrolled {
+    background: rgba(13, 13, 13, 0.85);
+    border-bottom: 1px solid rgba(0, 255, 195, 0.25);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color:  #b7b7b7;
+}
+
+nav a {
+
+    text-decoration: none;
+
+font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    padding: 8px 16px;
+    margin: 0 8px;
+
+    color: rgba(255,255,255,0.6);
+
+    border-radius: 8px;
+
+    background: transparent;
+    border: 1px solid transparent;
+
+    transition: all 0.25s ease;
+}
+
+nav a:hover {
+    color: #fff;
+
+    border: 1px solid rgba(0, 255, 195, 0.4);
+
+    background: rgba(0, 255, 195, 0.05);
+
+    box-shadow:
+        0 0 10px rgba(0, 255, 195, 0.2),
+        inset 0 0 10px rgba(0, 255, 195, 0.1);
+}
+
+nav .active {
+    color: #00ffc3;
+
+    border: 1px solid rgba(0, 255, 195, 0.6);
+
+    background: rgba(0, 255, 195, 0.08);
+
+    box-shadow:
+        0 0 12px rgba(0,255,195,0.3),
+        inset 0 0 12px rgba(0,255,195,0.15);
+}
+.icons {
+    font-size: 18px;
+    letter-spacing: 8px;
+    color: var(--text-dim);
+}
+/* CARRO LOGO*/
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.nav-categorias {
+    display: flex;
+    gap: 15px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.category-card {
+    padding: 50px 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    background: linear-gradient(145deg, #111, #1a1a1a);
+    border: 1px solid #1f1f1f;
+    transition: 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border: 1px solid #00ffd0;
+    box-shadow: 0 0 12px rgba(0, 255, 208, 0.2);
+}
+
+
+header .category-card {
+    padding: 8px 16px;
+    font-size: 12px;
+    cursor: pointer;
+
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    color: rgba(255,255,255,0.6);
+
+    transition: 0.3s;
+}
+
+header .category-card:hover {
+    color: #fff;
+    border: 1px solid rgba(0,255,195,0.5);
+    background: rgba(0,255,195,0.05);
+}
+/*========
+BOTÓN DEL CARRITO 
+=========*/
+
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+
+    color: white;
+    font-size: 18px;
+
+    transition: 0.2s;
+}
+
+.cart-icon:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.cart-svg {
+    width: 18px;
+    height: 18px;
+}
+
+.cart-text {
+    font-size: 13px;
+}
+
+#contador {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background: #00ffc3;
+    color: black;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ffc3;
+}
+
+.carrito {
+    padding: 60px;
+    background: #0a0a0a;
+    border-top: 1px solid #1f1f1f;
+}
+
+.carrito ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.carrito li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background: #111;
+    padding: 10px;
+}
+
+
+
+/* =========================
+>>>>>>> 218935e4a1cc4eeb94f57f294fac5680841a3845
 ANIMACIONES
 ========================= */
 
